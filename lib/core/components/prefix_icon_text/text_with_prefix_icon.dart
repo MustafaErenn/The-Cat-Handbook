@@ -13,11 +13,11 @@ class TextWithPrefixIcon extends StatelessWidget {
       children: [
         Icon(
           icon,
-          color: Colors.black,
+          color: Colors.white,
         ),
         Text(
           value,
-          style: context.textTheme.titleMedium?.copyWith(color: Colors.black),
+          style: context.textTheme.titleMedium?.copyWith(color: Colors.white),
         ),
       ],
     );

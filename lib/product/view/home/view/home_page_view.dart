@@ -1,5 +1,6 @@
 import 'package:cat_breeds_app/core/extension/context_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/base/view/base_view.dart';
@@ -30,7 +31,9 @@ class _HomePageViewState extends State<HomePageView> {
                 appBar: buildHomePageAppBar(context),
                 body: Center(
                   child: (context.watch<HomePageViewModel>().isLoading)
-                      ? const CircularProgressIndicator()
+                      ?
+                      // const CircularProgressIndicator()
+                      LottieBuilder.asset("assets/lottie/cat_loading.json")
                       : buildCatList(
                           context,
                           context
@@ -53,7 +56,6 @@ class _HomePageViewState extends State<HomePageView> {
     return AppBar(
       title: Text(
         ApplicationStringConstants.instance.homePageAppBarTitle,
-        style: context.textTheme.headline4?.copyWith(color: Colors.black),
       ),
       actions: [
         Padding(

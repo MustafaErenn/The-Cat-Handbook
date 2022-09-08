@@ -60,7 +60,6 @@ class _FavoritesPageViewState extends State<FavoritesPageView> {
     return AppBar(
       title: Text(
         ApplicationStringConstants.instance.favoritesAppBarTitle,
-        style: context.textTheme.headline4?.copyWith(color: Colors.black),
       ),
       leading: Padding(
         padding: context.paddingLowHorizontal,
@@ -73,7 +72,7 @@ class _FavoritesPageViewState extends State<FavoritesPageView> {
           },
           icon: const Icon(
             Icons.chevron_left_outlined,
-            color: Colors.black,
+            color: Colors.white,
             size: 40,
           ),
         ),

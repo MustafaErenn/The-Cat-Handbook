@@ -155,6 +155,9 @@ class FavoritesPageViewModel extends ChangeNotifier {
     if (query.isEmpty && breeds == null) {
       return;
     }
+    if ((breeds ?? []).isEmpty) {
+      return;
+    }
     for (var breed in breeds!) {
       if (breed.name?.toLowerCase().contains(query.toLowerCase()) ?? false) {
         findedBreeds.add(breed);

@@ -94,7 +94,7 @@ class CatBreedView extends StatelessWidget {
   Text buildBreedNameTitle(BuildContext context) {
     return Text(
       model?.name ?? "",
-      style: context.textTheme.titleLarge,
+      style: context.textTheme.titleLarge?.copyWith(color: Colors.white),
     );
   }
 }

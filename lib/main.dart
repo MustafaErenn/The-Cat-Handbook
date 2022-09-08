@@ -34,13 +34,13 @@ class MyApp extends StatelessWidget with NavigationRoutes {
       navigatorKey: NavigationManager.instance.navigatorKey,
       onGenerateRoute: onGenerateRoute,
       title: 'Material App',
-      theme: Theme.of(context).copyWith(
+      theme: ThemeData.dark().copyWith(
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.transparent,
           centerTitle: false,
           elevation: 0,
           titleTextStyle:
-              context.textTheme.headline4?.copyWith(color: Colors.black),
+              context.textTheme.headline4?.copyWith(color: Colors.white),
         ),
       ),
     );

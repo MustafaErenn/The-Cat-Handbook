@@ -81,7 +81,7 @@ class _DetailPageViewState extends State<DetailPageView> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _buildDataText(context, label),
+        _buildRatingLabel(context, label),
         ratingStars(double.parse(star.toString())),
       ],
     );
@@ -146,7 +146,7 @@ class _DetailPageViewState extends State<DetailPageView> {
   Text _buildLabelText(BuildContext context, String value) {
     return Text(
       value,
-      style: context.textTheme.headline6,
+      style: context.textTheme.headline6?.copyWith(color: Colors.black),
     );
   }
 
@@ -155,7 +155,16 @@ class _DetailPageViewState extends State<DetailPageView> {
       value,
       style: context.textTheme.titleMedium?.copyWith(
         fontWeight: FontWeight.w400,
+        color: Colors.black,
       ),
+    );
+  }
+
+  Widget _buildRatingLabel(BuildContext context, String value) {
+    return Text(
+      value,
+      style: context.textTheme.titleMedium
+          ?.copyWith(fontWeight: FontWeight.w400, color: Colors.white),
     );
   }
 
@@ -174,7 +183,7 @@ class _DetailPageViewState extends State<DetailPageView> {
 
   AppBar buildDetailPageAppBar(BuildContext context, bool isFavorite) {
     return AppBar(
-      title: const Text("Abyssinian"),
+      title: Text(widget.model?.name ?? ""),
       leading: Padding(
         padding: context.paddingLowHorizontal,
         child: IconButton(
@@ -185,7 +194,7 @@ class _DetailPageViewState extends State<DetailPageView> {
           },
           icon: const Icon(
             Icons.chevron_left_outlined,
-            color: Colors.black,
+            color: Colors.white,
             size: 40,
           ),
         ),

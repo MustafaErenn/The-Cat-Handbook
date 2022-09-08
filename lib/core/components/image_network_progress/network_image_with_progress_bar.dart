@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class NetworkImageWithProgressBar extends StatelessWidget {
   final String imagePath;
@@ -12,13 +13,15 @@ class NetworkImageWithProgressBar extends StatelessWidget {
         imagePath,
         loadingBuilder: (context, child, loadingProgress) {
           if (loadingProgress == null) return child;
-          return Center(
-            child: CircularProgressIndicator(
-              value: loadingProgress.expectedTotalBytes != null
-                  ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
-                  : null,
-            ),
-          );
+          return LottieBuilder.asset("assets/lottie/cat_loading.json");
+
+          // Center(
+          //   child: CircularProgressIndicator(
+          //     value: loadingProgress.expectedTotalBytes != null
+          //         ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+          //         : null,
+          //   ),
+          // );
         },
       ),
     );
