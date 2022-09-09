@@ -1,16 +1,28 @@
-# cat_breeds_app
+# The Cat Handbook 🐈
 
-A new Flutter project.
 
-## Getting Started
+# Uygulama İçi Görseller
 
-This project is a starting point for a Flutter application.
+Loading Screen
+<img src="images/1.jpeg" height="500">      
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Home Page
+<img src="images/2.jpeg"  height="500"> 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+##  Favorites Page
+<img src="images/3.jpeg" height="500"> 
+
+
+## Detail Page
+<img src="images/4.jpeg" height="500"> 
+
+
+
+
+
+[E-posta](mustafaeren790@gmail.com)
+
+[Linkedin](https://www.linkedin.com/in/mustafa-eren-9214661b3/)
