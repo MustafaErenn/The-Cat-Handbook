@@ -68,22 +68,7 @@ class _FavoritesPageViewState extends State<FavoritesPageView> {
       title: Text(
         ApplicationStringConstants.instance.favoritesAppBarTitle,
       ),
-      // leading: Padding(
-      //   padding: context.paddingLowHorizontal,
-      //   child: IconButton(
-      //     onPressed: () {
-      //       NavigationManager.instance.navigatorPop(
-      //         value:
-      //             context.read<FavoritesPageViewModel>().isFavoriteListChanged,
-      //       );
-      //     },
-      //     icon: const Icon(
-      //       Icons.chevron_left_outlined,
-      //       color: Colors.white,
-      //       size: 40,
-      //     ),
-      //   ),
-      // ),
+
       actions: const [],
     );
   }
@@ -104,7 +89,7 @@ class _FavoritesPageViewState extends State<FavoritesPageView> {
                     final result = await NavigationManager.instance
                         .navigateToPage(NavigationRoutesEnums.detail,
                             object: breeds?[index]);
-                    print("abicim $result");
+                    
                     if (result) {
                       context
                           .read<FavoritesPageViewModel>()
