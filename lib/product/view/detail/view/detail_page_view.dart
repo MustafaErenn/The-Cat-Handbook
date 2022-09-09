@@ -20,36 +20,41 @@ class DetailPageView extends StatefulWidget {
 class _DetailPageViewState extends State<DetailPageView> {
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: ChangeNotifierProvider(
-        create: (context) => DetailPageViewModel(widget.model),
-        builder: (context, child) {
-          return Scaffold(
-            appBar: buildDetailPageAppBar(
-                context, context.watch<DetailPageViewModel>().isFavorite),
-            body: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Column(children: [
-                NetworkImageWithProgressBar(
-                  imagePath: widget.model?.image?.url ??
-                      ApplicationStringConstants.instance.defaultImagePath,
-                ),
-                Card(
-                  margin: EdgeInsets.zero,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
+    return ChangeNotifierProvider(
+      create: (context) => DetailPageViewModel(widget.model),
+      builder: (context, child) {
+        return WillPopScope(
+            onWillPop: () async {
+              NavigationManager.instance.navigatorPop(
+                  value:
+                      Provider.of<DetailPageViewModel>(context, listen: false)
+                          .isChangeFavoriteStatus);
+              return false;
+            },
+            child: Scaffold(
+              appBar: buildDetailPageAppBar(
+                  context, context.watch<DetailPageViewModel>().isFavorite),
+              body: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Column(children: [
+                  NetworkImageWithProgressBar(
+                    imagePath: widget.model?.image?.url ??
+                        ApplicationStringConstants.instance.defaultImagePath,
                   ),
-                  child: Padding(
-                    padding: context.paddingMedium,
-                    child: buildBreedInfoColumn(context),
+                  Card(
+                    margin: EdgeInsets.zero,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    child: Padding(
+                      padding: context.paddingMedium,
+                      child: buildBreedInfoColumn(context),
+                    ),
                   ),
-                ),
-              ]),
-            ),
-          );
-        },
-      ),
+                ]),
+              ),
+            ));
+      },
     );
   }
 

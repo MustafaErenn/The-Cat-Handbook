@@ -1,4 +1,5 @@
 import 'package:cat_breeds_app/core/extension/context_extension.dart';
+import 'package:cat_breeds_app/product/view/favorites/viewmodel/favorites_page_view_model.dart';
 import 'package:cat_breeds_app/product/view/home/viewmodel/home_page_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +19,8 @@ Future<void> main() async {
             create: (_) => HomePageViewModel()),
         ChangeNotifierProvider<DetailPageViewModel>(
             create: (_) => DetailPageViewModel(null)),
+        ChangeNotifierProvider<FavoritesPageViewModel>(
+            create: (_) => FavoritesPageViewModel()),
       ],
       child: const MyApp(),
     ),

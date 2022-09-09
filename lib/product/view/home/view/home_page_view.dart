@@ -64,7 +64,7 @@ class _HomePageViewState extends State<HomePageView> {
             onPressed: () async {
               final result = await NavigationManager.instance
                   .navigateToPage(NavigationRoutesEnums.favorite);
-              if (result) {
+              if (result ?? false) {
                 context.read<HomePageViewModel>().getFavorites();
               }
             },

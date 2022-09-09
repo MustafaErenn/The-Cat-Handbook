@@ -17,14 +17,21 @@ class FavoritesPageView extends StatefulWidget {
 }
 
 class _FavoritesPageViewState extends State<FavoritesPageView> {
+  bool isChanged = false;
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: ChangeNotifierProvider(
-        create: (context) => FavoritesPageViewModel(),
-        builder: (context, child) {
-          return BaseView<FavoritesPageViewModel>(
+    return ChangeNotifierProvider(
+      create: (context) => FavoritesPageViewModel(),
+      builder: (context, child) {
+        return WillPopScope(
+          onWillPop: () async {
+            NavigationManager.instance.navigatorPop(
+                value:
+                    Provider.of<FavoritesPageViewModel>(context, listen: false)
+                        .isFavoriteListChanged);
+            return false;
+          },
+          child: BaseView<FavoritesPageViewModel>(
             onModelReady: (model) {},
             onPageBuilder: (_, value) {
               return SafeArea(
@@ -50,9 +57,9 @@ class _FavoritesPageViewState extends State<FavoritesPageView> {
                 ),
               );
             },
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 
@@ -61,22 +68,22 @@ class _FavoritesPageViewState extends State<FavoritesPageView> {
       title: Text(
         ApplicationStringConstants.instance.favoritesAppBarTitle,
       ),
-      leading: Padding(
-        padding: context.paddingLowHorizontal,
-        child: IconButton(
-          onPressed: () {
-            NavigationManager.instance.navigatorPop(
-              value:
-                  context.read<FavoritesPageViewModel>().isFavoriteListChanged,
-            );
-          },
-          icon: const Icon(
-            Icons.chevron_left_outlined,
-            color: Colors.white,
-            size: 40,
-          ),
-        ),
-      ),
+      // leading: Padding(
+      //   padding: context.paddingLowHorizontal,
+      //   child: IconButton(
+      //     onPressed: () {
+      //       NavigationManager.instance.navigatorPop(
+      //         value:
+      //             context.read<FavoritesPageViewModel>().isFavoriteListChanged,
+      //       );
+      //     },
+      //     icon: const Icon(
+      //       Icons.chevron_left_outlined,
+      //       color: Colors.white,
+      //       size: 40,
+      //     ),
+      //   ),
+      // ),
       actions: const [],
     );
   }
@@ -97,11 +104,12 @@ class _FavoritesPageViewState extends State<FavoritesPageView> {
                     final result = await NavigationManager.instance
                         .navigateToPage(NavigationRoutesEnums.detail,
                             object: breeds?[index]);
-
+                    print("abicim $result");
                     if (result) {
                       context
                           .read<FavoritesPageViewModel>()
                           .isFavoriteListChanged = result;
+                      isChanged = result;
                       context
                           .read<FavoritesPageViewModel>()
                           .getFavoritesFromCache();
