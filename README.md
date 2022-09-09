@@ -3,25 +3,26 @@
 
 # Uygulama İçi Görseller
 
-Loading Screen
+
+## Yüklenme Ekranı
 <img src="images/1.jpeg" height="500">      
 
 
-## Home Page
+## Ana Sayfa
 <img src="images/2.jpeg"  height="500"> 
 
 
 
-##  Favorites Page
+## Favoriler Sayfası
 <img src="images/3.jpeg" height="500"> 
 
 
-## Detail Page
+## Detay Sayfası
 <img src="images/4.jpeg" height="500"> 
 
 
 
-
+# İletişim
 
 [E-posta](mustafaeren790@gmail.com)
 
